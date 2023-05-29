@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
     $mail->Body = $message;
     $mail->send();
 
-    header('Location: index.html');
+    header('Location: index.php');
     // $mailto = "contact@mineditse.tech"; // our
     // $from = $_POST['email']; // sender's emai
     // $name = $_POST['name']; 

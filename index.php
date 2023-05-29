@@ -2,7 +2,6 @@
 
 include 'includes/connection.php';
 
-
 // Retrieves Information
 $sql = "SELECT * FROM defaults";
 $result = $connection->query($sql);
@@ -58,17 +57,9 @@ $result_services = $connection->query($services);
         <ul>
           <li><a class="nav-link scrollto active" href="./index.php#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="./index.php#values">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="products.php">Clothing Items</a></li>
-              <li><a href="products.php">Bags & Sandals</a></li>
-              <li><a href="products.php">Gown & Suit Rentals</a></li>
-            </ul>
-          </li>
+          <li><a class="nav-link" href="products.php">Products</a></li>
           <li><a class="nav-link scrollto" href="./index.php#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="about.php">About</a></li>
-          <li><a class="getstarted scrollto" href="https://mineditse.tech/login">Login</a></li>
-
+          <li><a class="nav-link" href="about.php">About</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

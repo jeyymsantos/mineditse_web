@@ -2,11 +2,13 @@
 
 include 'includes/connection.php';
 
-
 // Retrieves Information
 $sql = "SELECT * FROM defaults";
 $result = $connection->query($sql);
 $row = $result->fetch_assoc();
+
+$products = "SELECT * FROM products";
+$result_products = $connection->query($products);
 
 ?>
 
@@ -53,18 +55,11 @@ $row = $result->fetch_assoc();
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="./index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="./index.php#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="./index.php#values">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="products.php">Clothing Items</a></li>
-              <li><a href="products.php">Bags & Sandals</a></li>
-              <li><a href="products.php">Gown & Suit Rentals</a></li>
-            </ul>
-          </li>
+          <li><a class="nav-link active" href="products.php">Products</a></li>
           <li><a class="nav-link scrollto" href="./index.php#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="about.php">About</a></li>
-
+          <li><a class="nav-link" href="about.php">About</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -77,8 +72,30 @@ $row = $result->fetch_assoc();
     <!-- ======= About Section ======= -->
     <section id="about" class="about mt-5">
       <div class="container" data-aos="fade-up">
-      
-        <h1> Gown & Suit Rentals </h1>
+
+        <div class="row">
+
+          <?php
+          while ($row_products = $result_products->fetch_assoc()) :
+          ?>
+            <div class="col-lg-2 col-md-3 col-sm-4 mt-1 mb-3">
+              <div class="card h-100">
+                <img src="<?= $row_products['prod_img_path'] ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h4 class="text-dark"><?= $row_products['prod_name'] ?></h4>
+                  <p class="card-text">
+                    <?= $row_products['prod_price'] ?> | <?= $row_products['prod_category'] ?>
+                  </p>
+
+                  <p class="card-text <?= $row_products['prod_status'] == 'Available' ? 'text-success' : 'text-primary' ?>">
+                    <?= $row_products['prod_status'] ?>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          <?php endwhile ?>
+        </div>
 
       </div>
     </section><!-- End About Section -->
@@ -104,8 +121,7 @@ $row = $result->fetch_assoc();
               even bags & sandals!
             </p>
             <div class="social-links mt-3">
-              <a href="https://www.facebook.com/ditseziram/" target="_blank" class="facebook"><i
-                  class="bi bi-facebook"></i></a>
+              <a href="https://www.facebook.com/ditseziram/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
             </div>
           </div>
 
@@ -152,8 +168,7 @@ $row = $result->fetch_assoc();
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
