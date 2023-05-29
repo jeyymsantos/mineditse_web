@@ -48,12 +48,12 @@ if (isset($_POST['submit'])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.hostinger.com';
     $mail->SMTPAuth = 'true';
-    $mail->Username = 'inquiry@mineditse.tech';
+    $mail->Username = 'ask@mineditse.tech';
     $mail->Password = 'MineDitse@15';
     $mail->SMTPSecure = 'tls';
     $mail->Port = '587';
 
-    $mail->setFrom('inquiry@mineditse.tech', 'Mine Ditse Shop');
+    $mail->setFrom('ask@mineditse.tech', 'Mine Ditse Shop');
     $mail->addAddress($user);
     $mail->isHTML(true);
     $mail->Subject = $subject;

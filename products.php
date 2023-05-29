@@ -1,3 +1,15 @@
+<?php
+
+include 'includes/connection.php';
+
+
+// Retrieves Information
+$sql = "SELECT * FROM defaults";
+$result = $connection->query($sql);
+$row = $result->fetch_assoc();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,17 +17,15 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Welcome to Mine Ditse!</title>
+  <title>Welcome to <?= $row['name'] ?>!</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/landing_page/Logo.png" rel="icon">
+  <link href="<?= $row['logo'] ?>" rel="icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -36,25 +46,24 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="https://php.mineditse.tech" class="logo d-flex align-items-center">
-        <img src="assets/img/landing_page/Logo.png" alt="">
-        <span>Mine Ditse</span>
+      <a href="index.php" class="logo d-flex align-items-center">
+        <img src="<?= $row['logo'] ?>" alt="">
+        <span><?= $row['name'] ?></span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="./index.html#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="./index.html#values">Services</a></li>
-          <li class="dropdown"><a href="#"><span class="active">Products</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="./index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="./index.php#values">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="clothing.html" class="active">Clothing Items</a></li>
-              <li><a href="bags.html">Bags & Sandals</a></li>
-              <li><a href="rentals.html">Gown & Suit Rentals</a></li>
+              <li><a href="products.php">Clothing Items</a></li>
+              <li><a href="products.php">Bags & Sandals</a></li>
+              <li><a href="products.php">Gown & Suit Rentals</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="./index.html#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="about.html">About</a></li>
-          <li><a class="getstarted scrollto" href="https://mineditse.tech/login">Login</a></li>
+          <li><a class="nav-link scrollto" href="./index.php#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="about.php">About</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -69,7 +78,7 @@
     <section id="about" class="about mt-5">
       <div class="container" data-aos="fade-up">
       
-        <h1> Clothing Items </h1>
+        <h1> Gown & Suit Rentals </h1>
 
       </div>
     </section><!-- End About Section -->
